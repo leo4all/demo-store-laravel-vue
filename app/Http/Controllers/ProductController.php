@@ -73,7 +73,7 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         $status = $product->update(
-            $request->only(['name', 'description', 'units', 'price', 'image'])
+            $request->only(['name', 'description', 'amount', 'department','status'])
         );
 
         return response()->json([
