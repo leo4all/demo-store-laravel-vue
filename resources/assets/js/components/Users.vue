@@ -40,7 +40,7 @@ export default {
   },
   beforeMount() {
     axios
-      .get("/api/users/")
+      .get("/api/users")
       .then(response => {
         this.users = response.data;
       })
@@ -58,7 +58,7 @@ export default {
     addUser(product) {
       this.addingProduct = null;
       axios
-        .post("/api/users/", {
+        .post("/api/users", {
           name: users.name,
           name: users.email,
         })

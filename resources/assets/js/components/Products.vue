@@ -108,7 +108,7 @@ export default {
     addProduct(product) {
       this.addingProduct = null;
       axios
-        .post("/api/products/", {
+        .post("/api/products", {
           name: product.name,
           amount: product.amount,
           description: product.description,

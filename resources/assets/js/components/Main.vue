@@ -35,7 +35,7 @@ export default {
   },
   mounted() {
     axios
-      .get("/api/users/")
+      .get("/api/users")
       .then(response => {
         this.users = response.data;
       })
@@ -44,7 +44,7 @@ export default {
       });
 
     axios
-      .get("/api/products/")
+      .get("/api/products")
       .then(response => {
         this.products = response.data.total;
       })
