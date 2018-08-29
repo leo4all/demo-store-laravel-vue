@@ -4,7 +4,6 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 Vue.use( VueRouter)
-Vue.component('paginate', require('vuejs-paginate'))
 
 import App from './views/App'
 import Home from './views/Home'

@@ -14,19 +14,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::paginate(10);
-        $response = [
-            'pagination' => [
-                'total' => $products->total(),
-                'per_page' => $products->perPage(),
-                'current_page' => $products->currentPage(),
-                'last_page' => $products->lastPage(),
-                'from' => $products->firstItem(),
-                'to' => $products->lastItem()
-            ],
-            'data' => $products
-        ];
-        return response()->json($products);
+        return response()->json(Product::all(),200);
     }
 
     /**
@@ -72,8 +60,16 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
+
+        $fields = ['name', 'description', 'amount', 'department','status'];
+
+        if(!\Auth::user()->is_admin){
+            $fields = ['amount','status'];
+        }
+
+
         $status = $product->update(
-            $request->only(['name', 'description', 'amount', 'department','status'])
+            $request->only($fields)
         );
 
         return response()->json([

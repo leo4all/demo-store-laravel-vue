@@ -20,8 +20,8 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="(product,index) in products" @key="index" @dblclick="editingItem = product">
-                    <td v-html="product.name"></td>
+                <tr v-for="(product,index) in products" @key="index" @dblclick="editingItem = product" title="Double click to edit">
+                    <td v-html="product.name" ></td>
                     <td v-model="product.amount">$ {{product.amount}}</td>
                     <td v-model="product.department">{{product.department}}</td>
                     <td v-model="product.status">
@@ -33,17 +33,6 @@
                     </td>
                 </tr>
             </tbody>
-            <tfoot>
-              <div class="centered">
-                <paginate
-                :page-count="pageCount"
-                :click-handler="fetch"
-                :prev-text="'Prev'"
-                :next-text="'Next'"
-                :container-class="'pagination'">
-              </paginate>
-              </div>
-            </tfoot>
           </table>
         </div>
       </div>
@@ -60,26 +49,30 @@ export default {
       products: [],
       editingItem: null,
       addingProduct: null,
-      //endpoint:"/api/products/?page=",
-      pageCount:10
     };
   },
   components: {
     Modal
   },
-  created() {
-    this.fetch();
+  beforeMount(){
+    axios.get('/api/products/')
+    .then(response => {
+        this.products = response.data
+    })
+    .catch(error => {
+        console.error(error);
+    })
   },
   methods: {
-    fetch(page = 1) {
-         axios.get("/api/products")
-         .then(({data}) => {
-             this.products = data.data;
-             this.pageCount = data.last_page;
-          }).catch(error => {
-            console.error(error);
-        });
-      },
+    fetch(){
+      axios.get('/api/products/')
+      .then(response => {
+          this.products = response.data
+      })
+      .catch(error => {
+          console.error(error);
+      })
+    },
     newProduct() {
       this.addingProduct = {
         name: null,
@@ -116,6 +109,7 @@ export default {
           status: product.status
         })
         .then(response => {
+          this.fetch()
           this.products.push(product);
         })
         .catch(response => {});
@@ -127,7 +121,6 @@ export default {
             .delete('/api/products/' + product.id)
             .then(function (response) {
               _this.fetch();
-              //toastr.success('Item Deleted Successfully.', 'Success Alert', {timeOut: 5000});
             })
             .catch(function (resp) {
               alert("Could not delete product");

@@ -3,7 +3,7 @@
         <div class="col-sm-6 col-lg-3">
           <div class="card text-white bg-primary">
               <div class="card-body pb-0">
-                <div class="text-value">{{products || 0}}</div>
+                <div class="text-value">{{products.length || 0}}</div>
                 <div><a href='/admin/products'>Products </a></div>
               </div>
               <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
@@ -46,7 +46,7 @@ export default {
     axios
       .get("/api/products")
       .then(response => {
-        this.products = response.data.total;
+        this.products = response.data;
       })
       .catch(error => {
         console.error(error);

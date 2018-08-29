@@ -10,23 +10,28 @@
             <table class="table">
               <tr>
                 <th>Name: </th>
-                <td><input type="text" v-model="data.name" class="form-control"></td>
+                <td><input type="text" v-model="data.name" class="form-control" :disabled="disabled == 0 ? true : false" required ></td>
               </tr>
               <tr>
                 <th>Amount: </th>
-                <td><input type="number" step="0.01" v-model="data.amount" class="form-control"></td>
+                <td><input type="number" step="0.01" v-model="data.amount" class="form-control" required></td>
               </tr>
               <tr>
                 <th>Department: </th>
-                <td><input type="text" v-model="data.department" class="form-control"></td>
+                <td><input type="text" v-model="data.department" class="form-control" :disabled="disabled == 0 ? true : false"></td>
               </tr>
               <tr>
                 <th>Description</th>
-                <td><textarea v-model="data.description" class="form-control"></textarea></td>
+                <td><textarea v-model="data.description" class="form-control" :disabled="disabled == 0 ? true : false"></textarea></td>
               </tr>
               <tr>
                 <th>Status: </th>
-                <td><input type="text" v-model="data.status" class="form-control"></td>
+                <td>
+                  <select v-model="data.status" class="form-control" required>
+                    <option value="have enough">Have enough</option>
+                    <option value="need to restock">Need to restock</option>
+                  </select>
+                </td>
               </tr>
             </table>
           </slot>
@@ -45,7 +50,8 @@
     props : ['product'],
     data(){
       return {
-        attachment : null
+        attachment : null,
+        disabled:JSON.parse(localStorage.getItem("user")).is_admin
       }
     },
     computed : {
@@ -88,59 +94,3 @@
     }
   }
 </script>
-<style scoped>
-.modal-mask {
-  position: fixed;
-  z-index: 9998;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, .5);
-  display: table;
-  transition: opacity .3s ease;
-}
-
-.modal-wrapper {
-  display: table-cell;
-  vertical-align: middle;
-}
-
-.modal-container {
-  width: 500px;
-  margin: 0px auto;
-  padding: 20px 30px;
-  background-color: #fff;
-  border-radius: 2px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
-  transition: all .3s ease;
-  font-family: Helvetica, Arial, sans-serif;
-}
-
-.modal-header h3 {
-  margin-top: 0;
-  color: #42b983;
-}
-
-.modal-body {
-  margin: 20px 0;
-}
-
-.modal-default-button {
-  float: right;
-}
-
-.modal-enter {
-  opacity: 0;
-}
-
-.modal-leave-active {
-  opacity: 0;
-}
-
-.modal-enter .modal-container,
-.modal-leave-active .modal-container {
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1);
-}
-</style>

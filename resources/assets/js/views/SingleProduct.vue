@@ -1,11 +1,11 @@
 <template>
-   <div class="app flex-row align-items-center mt-4">
+   <div class="app flex-row align-items-center mt-5">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
               <div class="card">
                 <div class="card-header">
-                  <a @click="$router.go(-1)" href="#"><i class="icon-arrow-left-circle"></i> back</a>
+                  <a @click="$router.go(-1)" href="#" class="btn btn-sm"><i class="icon-arrow-left-circle"></i> back</a>
                 </div>
                 <div class="card-body pt-4 pb-2">
                   <div class="wrapper row">
