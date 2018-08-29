@@ -20,4 +20,4 @@
         window.Laravel=@json(csrf_token())
     </script>
 </head>
-<body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
+<body class="app header-fixed sidebar-fixed sidebar-lg-show">

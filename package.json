@@ -11,6 +11,7 @@
         "postinstall": "npm run prod"
     },
     "devDependencies": {
+        "@vue/test-utils": "^1.0.0-beta.24",
         "axios": "^0.18",
         "babel-plugin-wildcard": "^5.0.0",
         "babel-preset-stage-2": "^6.24.1",
@@ -27,6 +28,8 @@
         "jquery": "^3.2",
         "laravel-mix": "^2.0",
         "lodash": "^4.17.5",
+        "mocha": "^5.2.0",
+        "mocha-webpack": "^1.1.0",
         "popper.js": "^1.14.4",
         "pre-commit": "^1.2.2",
         "prettier": "1.12.1",

@@ -12,7 +12,7 @@ class UserController extends Controller
 {
 
     /**
-     * Undocumented function
+     * Users retrieve function
      *
      * @return void
      */
@@ -21,7 +21,7 @@ class UserController extends Controller
     }
 
     /**
-     * Undocumented function
+     * User login function
      *
      * @param Request $request
      * @return void
@@ -48,7 +48,7 @@ class UserController extends Controller
     }
 
     /**
-     * Undocumented function
+     * User show function
      *
      * @param User $user
      * @return void

@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     /**
-     * Undocumented function
+     * Product retrieve function
      *
      * @return void
      */
@@ -18,7 +18,7 @@ class ProductController extends Controller
     }
 
     /**
-     * Undocumented function
+     * Product store function
      *
      * @param Request $request
      * @return void
@@ -41,7 +41,7 @@ class ProductController extends Controller
     }
 
     /**
-     * Undocumented function
+     * Product show function
      *
      * @param Product $product
      * @return void
@@ -52,7 +52,7 @@ class ProductController extends Controller
     }
 
     /**
-     * Undocumented function
+     * Product update function
      *
      * @param Request $request
      * @param Product $product
@@ -79,7 +79,7 @@ class ProductController extends Controller
     }
 
     /**
-     * Undocumented function
+     * Product delete function
      *
      * @param Product $product
      * @return void
