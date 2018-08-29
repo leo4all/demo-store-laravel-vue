@@ -60,7 +60,7 @@ export default {
       products: [],
       editingItem: null,
       addingProduct: null,
-      endpoint:"/api/products/?page=",
+      //endpoint:"/api/products/?page=",
       pageCount:10
     };
   },
@@ -72,7 +72,7 @@ export default {
   },
   methods: {
     fetch(page = 1) {
-         axios.get(this.endpoint + page)
+         axios.get("/api/products")
          .then(({data}) => {
              this.products = data.data;
              this.pageCount = data.last_page;
