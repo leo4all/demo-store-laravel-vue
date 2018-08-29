@@ -55,7 +55,7 @@ export default {
     Modal
   },
   beforeMount(){
-    axios.get('/api/products/')
+    axios.get('/api/products')
     .then(response => {
         this.products = response.data
     })
@@ -65,7 +65,7 @@ export default {
   },
   methods: {
     fetch(){
-      axios.get('/api/products/')
+      axios.get('/api/products')
       .then(response => {
           this.products = response.data
       })
